@@ -26,6 +26,7 @@ public class Destroyer : MonoBehaviour
         if(collision.gameObject.CompareTag("Collectable"))
         {
             collected.AddToScore();
+            ScaleUp();
             Destroy(collision.gameObject);
          }
 
@@ -36,5 +37,9 @@ public class Destroyer : MonoBehaviour
         }
     }
 
+    void ScaleUp()
+    {
+        transform.localScale = new Vector3(transform.localScale.x+0.005f,transform.localScale.y +0.005f, 0);
+    }
  
 }
