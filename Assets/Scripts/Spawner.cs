@@ -9,44 +9,41 @@ public class Spawner : MonoBehaviour
     float rngY,rngX;
     public GameObject collectable;
     public GameObject enemy;
-    bool canSpawnCollectable = true;
-    bool canSpawnEnemy = true;
+    readonly bool canSpawnCollectable = true;
+    readonly bool canSpawnEnemy = true;
     void Start()
     {
-        StartCoroutine(spawnCollectables());
-        StartCoroutine(spawnEnemies());
+        StartCoroutine(SpawnCollectables());
+        StartCoroutine(SpawnEnemies());
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    IEnumerator spawnCollectables()
+
+    IEnumerator SpawnCollectables()
     {
         while (canSpawnCollectable) {
-            collecableCreation();
+            CollecableCreation();
         yield return new WaitForSeconds(collectableSpawnTime);
     }
     }
 
-    IEnumerator spawnEnemies()
+    IEnumerator SpawnEnemies()
     {
         while (canSpawnEnemy)
         {
-            enemyCreation();
+            EnemyCreation();
             yield return new WaitForSeconds(enemySpawnTime);
         }
     }
 
-    void enemyCreation() {
+    void EnemyCreation() {
         rngX = UnityEngine.Random.Range(-22, 22);
         rngY = UnityEngine.Random.Range(-9, 9);
         Instantiate(enemy, new Vector3(rngX, rngY, 0), Quaternion.identity);
     }
 
-    void collecableCreation ()
+    void CollecableCreation ()
     {
         rngX = UnityEngine.Random.Range(-22,22);
         rngY = UnityEngine.Random.Range(-9,9);

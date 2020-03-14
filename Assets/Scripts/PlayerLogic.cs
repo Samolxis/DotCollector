@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
-
     public float playerSpeed = 10f;
-    void Start()
-    {
-        
-    }
-
-  
     void Update()
     {
         MovePlayerToMousePosition();
